@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block css %}
+{% endblock %}
+
+{% block index-menu %}active{% endblock %}
+
+{% block title %}{% trans '编辑' %} - {% endblock %}
+
+{% block js %}
+{{ form.media }}
+{% endblock %}
+
+{% block content %}
+<form action="" method="post"> {% csrf_token %}
+    {{ form.as_p }}
+    {{ form.non_field_errors }}
+    
+   <p class="row pull-right"><input type="submit" class="btn btn-primary" value="{% trans '保存' %}" />  <a href="/" class="btn" >{% trans '取消' %}</a>
+   </p>
+</form>
+{% endblock %}

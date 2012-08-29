@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block css %}
+{% endblock %}
+
+{% block index-menu %}active{% endblock %}
+
+{% block title %}{% trans '首页' %} - {% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block content %}
+{% for blog in blogs %}
+	<section id="blog{{ blog.id }}" class="row well" >
+		<div class="page-header">
+			<h1><a href="/blog/{{ blog.id }}/">{{ blog.title }}</a> </h1>
+			<h1>
+			<small>{% trans '时间' %}: {{ blog.created|date:"Y-m-d H:i:s" }}</small>
+			<small>{% trans '作者' %} : {{ blog.user }} </small></h1>
+		</div>
+		<div class="page-content">
+			<div>
+			{{ blog.content|safe }}
+			</div>
+		</div>
+	</section>
+{% endfor %}
+
+	<div class="pagination pull-right">
+		<ul class="pager">
+		{% if blogs.has_previous %}
+		<li>
+			<a class="btn-small" href="/page/{{ blogs.previous_page_number }}/">{% trans '上一页' %}</a>
+		 </li>
+		{% endif %}
+		
+		{% if blogs.has_next %}
+		<li>
+			<a class="btn-small" href="/page/{{ blogs.next_page_number }}/">{% trans '下一页' %}</a>
+		</li>
+		{% endif %}
+		  
+		
+		</ul>
+	</div>
+{% endblock %}
+
+

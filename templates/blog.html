@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block css %}
+{% endblock %}
+
+{% block title %}{% trans '首页' %} - {% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block content %}
+	<section id="blog{{ blog.id }}" class="row well" >
+		<div class="page-header">
+			<h1><a href="/blog/{{ blog.id }}/">{{ blog.title }}</a> </h1>
+			<h1>
+			<small>{% trans '时间' %}: {{ blog.created|date:"Y-m-d H:i:s" }}</small>
+			<small>{% trans '作者' %} : {{ blog.user }} </small>
+		{% if user and user.is_authenticated and user == blog.user %}
+		<span class="pull-right">
+			<a class="btn" href="/markdownblog/{{ blog.id }}/">{% trans '编辑' %}</a>
+			<a class="btn" href="/deleteblog/{{ blog.id }}/">{% trans '删除' %}</a>
+		</span>
+		{% endif %}
+		</h1>
+		</div>
+		<div class="page-content">
+			<div>
+			{{ blog.content|safe }}
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+

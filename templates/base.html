@@ -1,0 +1,98 @@
+<!DOCTYPE html>{% load i18n %}
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock %}{% trans '博客' %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{{ settings.STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+        <link href="{{ settings.STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        {% block css %}{% endblock %}
+        <link rel="shortcut icon" type="image/x-icon" href="{{ settings.STATIC_URL }}favicon.ico" />
+    </head>
+    <body data-spy="scroll" data-target=".subnav">
+        <!-- Navbar ================================================== -->
+        <div class="header navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                     </a>
+                    <a class="brand" href="/">{% trans '博客' %}</a>
+                    <div class="nav-collapse">
+                    <ul class="nav nav-pills">
+                        <li class="index {% block index-menu %}{% endblock %}"><a href="/">{% trans '首页' %}</a></li>
+                        <li class="list {% block list-menu %}{% endblock %}"><a href="/bloglist/1/">{% trans '目录' %}</a></li>
+                        {% if not user.is_authenticated %}
+                        <li class="login {% block login-menu %}{% endblock %}"><a href="/login/">{% trans '登录' %}</a></li>
+                        <li class="register {% block register-menu %}{% endblock %}"><a href="/register/">{% trans '注册' %}</a></li>
+                        {% else %}
+                        <li class="markdownblog {% block addblog-menu %}{% endblock %}"><a href="/markdownblog/">{% trans '新增' %}</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" ><b>{{ user.username }}</b><b class="caret"></b></a>
+                            <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu">
+                              <li><a href="/change_passwd/">{% trans '修改密码' %}</a></li>
+                              <li class="divider"></li>
+                              <li><a href="/signout/">{% trans '退出' %}</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Container ================================================== -->
+        <div class="clear">&nbsp;</div>
+        <div class="clear">&nbsp;</div>
+        <br/><br/><br/>
+        <div class="container" >
+            <div class="row">
+            <div class="span8 offset1" >
+            <!-- content ================================================== -->
+            {% block content %}{% endblock %}
+            </div>
+            <div class="span2 offset1">
+            <!-- sidebar ================================================== -->
+            {% block sidebar %}
+                <div class="well sidebar-nav">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">About Me</li>
+                        <li>{{ user.username }}</li>
+                        <li class="nav-header">Links</li>
+                        <li>link1</li>
+                        <li>link2</li>
+                        <li>link3</li>
+                    </ul>
+                </div>
+            {% endblock %}
+            </div>
+            </div>
+            
+            <!-- Footer ================================================== -->
+            <div class="divider">&nbsp;</div>
+            <div class="clear">&nbsp;</div>
+            <br/><br/><br/>
+            <footer class="footer">
+                <div class="container">
+                    <div class="page-header">
+                    </div>
+                    <div class="row">
+                    <p class="span4 offset2">&copy; Company 2012</p> 
+                    <p class="span2 offset2 pull-right"><a href="#">回到顶端</a></p>
+                    </div>
+                </div>
+            </footer>
+          
+        </div><!-- /container -->
+        
+        <script src="{{ settings.STATIC_URL }}js/jquery.min.js"></script>
+        <script src="{{ settings.STATIC_URL }}js/bootstrap.js"></script>
+        {% block js %}{% endblock %}
+    </body>
+</html>

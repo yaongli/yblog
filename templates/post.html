@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block css %}
+{% endblock %}
+
+{% block index-menu %}active{% endblock %}
+
+{% block title %}{% trans '编辑' %} - {% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block content %}
+<form action="/saveblog/" method="post"> {% csrf_token %}
+	<input type="hidden" name="user" id="id_user" value="{{ user }}" />
+	<div class="row">
+		<div class="span8" >
+        <label for="id_title">{% trans '标题' %}</label> <input class="span8" id="id_title" type="text" name="title" maxlength="255" value="{{ form.title.value }}"/>
+		</div>
+    </div>
+    
+    <div class="row">
+		<div class="span8" >
+         <label for="id_markdown">{% trans 'Markdown' %}</label> <textarea class="span8" id="id_markdown" rows="20" name="markdown" >{{ form.markdown.value }}</textarea>
+		 </div>
+    </div>
+	
+	
+   <p class="row pull-right"><input type="submit" class="btn btn-primary" value="{% trans '保存' %}" />  <a href="/" class="btn" >{% trans '取消' %}</a>
+   </p>
+</form>
+{% endblock %}
