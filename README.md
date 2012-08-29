@@ -9,7 +9,7 @@
 1. Python: 2.7
 2. django: 1.4
 3. markdown: `https://github.com/waylan/Python-Markdown/`
-
+4. bootstrap: `https://github.com/twitter/bootstrap`
 
 安装步骤
 --------
@@ -22,8 +22,8 @@
 
 参考和引用项目
 --------------
- - [djblog]()
- - [openparty]()
+ - [djblog](https://github.com/ichuan/djblog)
+ - [bootstrap](https://github.com/twitter/bootstrap)
+ - [openparty](https://github.com/openparty/openparty)
  - [markdown](https://github.com/waylan/Python-Markdown/)
- - [wmd]()
- 
+ - [wmd](https://github.com/madisona/django-wmd-editor)
