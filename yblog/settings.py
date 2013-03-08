@@ -4,6 +4,7 @@ import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+SITE_PREFIX = ""
 
 ROOT_DIR = os.path.dirname(__file__)
 
@@ -103,7 +104,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'yblog.urls'
+ROOT_URLCONF = 'yblog.sub_site_urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'yblog.wsgi.application'

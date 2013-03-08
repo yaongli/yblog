@@ -25,19 +25,19 @@
                     <a class="brand" href="/">{% trans '博客' %}</a>
                     <div class="nav-collapse">
                     <ul class="nav nav-pills">
-                        <li class="index {% block index-menu %}{% endblock %}"><a href="/">{% trans '首页' %}</a></li>
-                        <li class="list {% block list-menu %}{% endblock %}"><a href="/bloglist/1/">{% trans '目录' %}</a></li>
+                        <li class="index {% block index-menu %}{% endblock %}"><a href="{{ settings.SITE_PREFIX }}/">{% trans '首页' %}</a></li>
+                        <li class="list {% block list-menu %}{% endblock %}"><a href="{{ settings.SITE_PREFIX }}/bloglist/1/">{% trans '目录' %}</a></li>
                         {% if not user.is_authenticated %}
-                        <li class="login {% block login-menu %}{% endblock %}"><a href="/login/">{% trans '登录' %}</a></li>
-                        <li class="register {% block register-menu %}{% endblock %}"><a href="/register/">{% trans '注册' %}</a></li>
+                        <li class="login {% block login-menu %}{% endblock %}"><a href="{{ settings.SITE_PREFIX }}/login/">{% trans '登录' %}</a></li>
+                        <li class="register {% block register-menu %}{% endblock %}"><a href="{{ settings.SITE_PREFIX }}/register/">{% trans '注册' %}</a></li>
                         {% else %}
-                        <li class="markdownblog {% block addblog-menu %}{% endblock %}"><a href="/markdownblog/">{% trans '新增' %}</a></li>
+                        <li class="markdownblog {% block addblog-menu %}{% endblock %}"><a href="{{ settings.SITE_PREFIX }}/markdownblog/">{% trans '新增' %}</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" ><b>{{ user.username }}</b><b class="caret"></b></a>
                             <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu">
-                              <li><a href="/change_passwd/">{% trans '修改密码' %}</a></li>
+                              <li><a href="{{ settings.SITE_PREFIX }}/change_passwd/">{% trans '修改密码' %}</a></li>
                               <li class="divider"></li>
-                              <li><a href="/signout/">{% trans '退出' %}</a></li>
+                              <li><a href="{{ settings.SITE_PREFIX }}/signout/">{% trans '退出' %}</a></li>
                             </ul>
                         </li>
                         {% endif %}
