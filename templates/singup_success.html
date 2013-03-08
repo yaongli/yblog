@@ -3,6 +3,6 @@
 {% block content %}
   <div id="notice" class="narrow">
     <p>恭喜你注册成功。注册邮箱: {{ email }}</p>
-    <p>点击<a href="/" >这里</a> 返回首页。</p>
+    <p>点击<a href="{{ settings.SITE_PREFIX }}/" >这里</a> 返回首页。</p>
   </div>
 {% endblock %}

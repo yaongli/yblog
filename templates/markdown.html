@@ -17,7 +17,7 @@
     {{ form.as_p }}
     {{ form.non_field_errors }}
     
-   <p class="row pull-right"><input type="submit" class="btn btn-primary" value="{% trans '保存' %}" />  <a href="/" class="btn" >{% trans '取消' %}</a>
+   <p class="row pull-right"><input type="submit" class="btn btn-primary" value="{% trans '保存' %}" />  <a href="{{ settings.SITE_PREFIX }}/" class="btn" >{% trans '取消' %}</a>
    </p>
 </form>
 {% endblock %}
